@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #090c09;
+  --surface-color: #111411;
+  --surface-low: #141814;
+  --lime-primary: #bbf527;
+  --lime-accent: #c4ff33;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    background-color: #090c09;
+    color: #e1e3dd;
+  }
+
+  body {
+    background-color: #090c09;
+    color: #e1e3dd;
+    font-family: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom Tabular numbers for live metrics */
+  .tabular-nums {
+    font-feature-settings: "tnum" on, "cv05" on;
+  }
+}
+
+/* Custom background grid */
+.tech-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Glowing Neon Elements */
+.glow-lime-radial {
+  background: radial-gradient(circle at 50% 0%, rgba(196, 255, 51, 0.12) 0%, transparent 70%);
+}
+
+.glow-center-large {
+  background: radial-gradient(circle at 50% 50%, rgba(187, 245, 39, 0.08) 0%, transparent 65%);
+}
+
+.neon-border-hover:hover {
+  border-color: rgba(196, 255, 51, 0.45);
+  box-shadow: 0 0 24px rgba(196, 255, 51, 0.15);
+}
+
+/* Scrollbar tweaks */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090c09;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #242824;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333632;
+}
+
+/* Remove default slider styles for custom lime sliders */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #bbf527;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(187, 245, 39, 0.6);
+  border: 2px solid #090c09;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #bbf527;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(187, 245, 39, 0.6);
+  border: 2px solid #090c09;
+}
