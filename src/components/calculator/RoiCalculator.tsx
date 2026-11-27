@@ -19,6 +19,8 @@ import {
   GitBranch,
 } from 'lucide-react';
 import { MotionWrapper } from '@/components/ui/MotionWrapper';
+import { Magnetic } from '@/components/ui/Magnetic';
+import { useToast } from '@/components/ui/Toast';
 import { siteContent } from '@/data/content';
 
 interface RoiCalculatorProps {
@@ -26,6 +28,7 @@ interface RoiCalculatorProps {
 }
 
 export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenModal }) => {
+  const toast = useToast();
   // State for interactive sliders
   const [teamSize, setTeamSize] = useState<number>(18);
   const [manualHours, setManualHours] = useState<number>(14);
@@ -114,6 +117,7 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenModal }) => 
     e.preventDefault();
     if (!dossierEmail) return;
     setDossierSent(true);
+    toast.success('Dossiê Enviado!', `Memorial de cálculo transmitido para ${dossierEmail}`);
   };
 
   return (
@@ -490,7 +494,7 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenModal }) => 
                   Projeção Financeira Cumulativa em 3 Anos
                 </span>
                 <p className="text-[11px] text-secondary">
-                  Custo Linear Tradicional vs. Infraestrutura Vértice Tech
+                  Custo Linear Tradicional vs. Infraestrutura Danter
                 </p>
               </div>
               <div className="flex items-center gap-3 text-[11px] font-mono">
@@ -498,7 +502,7 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenModal }) => 
                   <span className="w-2.5 h-0.5 bg-gray-500" /> Linear
                 </span>
                 <span className="flex items-center gap-1 text-primary-container">
-                  <span className="w-2.5 h-0.5 bg-primary-container" /> Vértice Tech
+                  <span className="w-2.5 h-0.5 bg-primary-container" /> Danter
                 </span>
               </div>
             </div>
@@ -532,7 +536,7 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenModal }) => 
                   strokeWidth="2"
                 />
 
-                {/* Vertice Tech Cost Path */}
+                {/* Danter Cost Path */}
                 <path
                   d="M 0 85 L 130 73 L 260 69 L 400 68"
                   fill="none"
@@ -630,13 +634,15 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenModal }) => 
                   onChange={(e) => setDossierEmail(e.target.value)}
                   className="w-full px-4 py-2.5 bg-surface-container-low text-white text-xs rounded-xl border border-white/10 focus:outline-none focus:border-primary-container transition-all"
                 />
-                <button
-                  type="submit"
-                  className="w-full sm:w-auto shrink-0 px-5 py-2.5 rounded-xl bg-primary-container text-on-primary-container text-xs font-bold hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
-                >
-                  <span>Receber Dossiê</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                <Magnetic strength={0.2}>
+                  <button
+                    type="submit"
+                    className="w-full sm:w-auto shrink-0 px-5 py-2.5 rounded-xl bg-primary-container text-on-primary-container text-xs font-bold hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <span>Receber Dossiê</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </Magnetic>
               </form>
             ) : (
               <div className="text-xs text-primary-container font-semibold mt-1 flex items-center gap-1.5">
@@ -648,14 +654,14 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenModal }) => 
         </MotionWrapper>
       </div>
 
-      {/* Comparison Table: Current Scenario vs. Vertice Tech Scenario */}
+      {/* Comparison Table: Current Scenario vs. Danter Scenario */}
       <MotionWrapper delay={0.3} className="mb-16">
         <div className="p-6 sm:p-8 rounded-2xl bg-surface-container-low border border-white/10 shadow-2xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-white/10">
             <div>
               <h3 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
                 <GitBranch className="w-5 h-5 text-primary-container" />
-                Matriz Comparativa: Cenário Atual vs. Arquitetura Vértice Tech
+                Matriz Comparativa: Cenário Atual vs. Arquitetura Danter
               </h3>
               <p className="text-xs text-secondary mt-1">
                 Como os gargalos operacionais são convertidos em elasticidade e lucro contínuo
@@ -673,7 +679,7 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenModal }) => 
                   <th className="py-3 px-4">Dimensão Operacional</th>
                   <th className="py-3 px-4">Cenário Tradicional (Status Quo)</th>
                   <th className="py-3 px-4 text-primary-container bg-primary-container/5 rounded-t-lg">
-                    Com Vértice Tech (IA Autônoma)
+                    Com Danter (IA Autônoma)
                   </th>
                   <th className="py-3 px-4 text-right">Impacto Direto</th>
                 </tr>
@@ -684,7 +690,7 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenModal }) => 
                     <td className="py-4 px-4 font-bold text-white">{row.dimension}</td>
                     <td className="py-4 px-4 text-secondary">{row.traditional}</td>
                     <td className="py-4 px-4 text-white bg-primary-container/5 font-semibold">
-                      {row.vertice}
+                      {row.danter}
                     </td>
                     <td className="py-4 px-4 text-right text-primary-container font-mono font-bold whitespace-nowrap">
                       {row.impact}
@@ -719,7 +725,7 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenModal }) => 
             <span className="text-sm font-bold text-white">Deploy Ágil em 4 a 6 Semanas</span>
           </div>
           <p className="text-xs text-secondary leading-relaxed">
-            Metodologia Vértice High-Velocity: prototipamos e conectamos agentes nos seus bancos legados sem interromper o fluxo operacional em produção.
+            Metodologia Danter High-Velocity: prototipamos e conectamos agentes nos seus bancos legados sem interromper o fluxo operacional em produção.
           </p>
         </MotionWrapper>
 
@@ -735,6 +741,22 @@ export const RoiCalculator: React.FC<RoiCalculatorProps> = ({ onOpenModal }) => 
           </p>
         </MotionWrapper>
       </div>
+
+      {/* Action CTA Banner after ROI */}
+      <MotionWrapper delay={0.5} className="mt-12 text-center flex flex-col items-center">
+        <Magnetic strength={0.3}>
+          <button
+            onClick={onOpenModal}
+            className="inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full bg-primary-container text-on-primary-container font-bold text-sm hover:brightness-110 shadow-lime-glow transition-all duration-150 cursor-pointer active:scale-[0.97]"
+          >
+            <span>Validar Esse Modelo com Nossos Arquitetos</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </Magnetic>
+        <span className="text-xs text-secondary mt-3 font-mono">
+          Sem compromisso comercial • Diagnóstico técnico de 30 minutos
+        </span>
+      </MotionWrapper>
     </section>
   );
 };

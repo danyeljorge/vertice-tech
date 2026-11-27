@@ -9,21 +9,23 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Coluna 1: Sobre & Brand */}
           <div className="flex flex-col gap-4">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#141814] border border-primary-container/30 flex items-center justify-center relative shadow-[0_0_12px_rgba(187,245,39,0.2)]">
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <div className="w-8 h-8 rounded-lg bg-[#141814] border border-primary-container/30 flex items-center justify-center relative shadow-[0_0_12px_rgba(187,245,39,0.2)] group-hover:border-primary-container transition-colors">
                 <svg
                   className="w-4 h-4 text-primary-container"
+                  viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.5"
-                  viewBox="0 0 24 24"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
-                  <polygon points="12 2 22 20 2 20" />
-                  <path d="M12 9v6" strokeLinecap="round" />
+                  <path d="M4 4h7a8 8 0 0 1 8 8 8 8 0 0 1-8 8H4V4z" />
+                  <path d="M10 9l3 3-3 3" />
                 </svg>
               </div>
-              <span className="text-xl font-bold tracking-tight text-white">
-                Vértice<span className="text-primary-container font-light">Tech</span>
+              <span className="text-xl font-bold tracking-tight text-white flex items-center">
+                Danter<span className="text-primary-container">.</span>
               </span>
             </Link>
 
@@ -31,14 +33,14 @@ export const Footer: React.FC = () => {
               Engenharia de software sob medida, arquitetura em nuvem e inteligência artificial aplicada para empresas que buscam escala e precisão.
             </p>
 
-            <span className="text-xs text-secondary/70">
-              © {new Date().getFullYear()} Vértice Tech. Todos os direitos reservados.
+            <span className="text-xs text-secondary/70 font-mono">
+              © {new Date().getFullYear()} Danter. Todos os direitos reservados.
             </span>
           </div>
 
           {/* Coluna 2: Navegação */}
           <div className="flex flex-col gap-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-1">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-1 font-mono">
               Navegação
             </h4>
             <nav className="flex flex-col gap-2 text-xs sm:text-sm text-secondary">
@@ -65,7 +67,7 @@ export const Footer: React.FC = () => {
 
           {/* Coluna 3: Soluções */}
           <div className="flex flex-col gap-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-1">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-1 font-mono">
               Soluções Técnicas
             </h4>
             <ul className="flex flex-col gap-2 text-xs sm:text-sm text-secondary">
@@ -89,17 +91,17 @@ export const Footer: React.FC = () => {
 
           {/* Coluna 4: Contato & Presença */}
           <div className="flex flex-col gap-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-1">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-1 font-mono">
               Contato Corporativo
             </h4>
             <div className="flex flex-col gap-2 text-xs sm:text-sm text-secondary">
               <div className="flex items-center gap-2 text-white">
                 <Mail className="w-3.5 h-3.5 text-primary-container" />
-                <span>contato@vertice.tech</span>
+                <span className="font-mono">contato@danter.tech</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-primary-container" />
-                <span>+55 (11) 98765-4321</span>
+                <span className="font-mono">+55 (11) 98765-4321</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-primary-container" />
@@ -111,21 +113,21 @@ export const Footer: React.FC = () => {
               <a
                 href="#diagnostico"
                 aria-label="Terminal"
-                className="w-8 h-8 rounded-full bg-surface-container border border-white/10 flex items-center justify-center text-secondary hover:text-primary-container hover:border-primary-container transition-all"
+                className="w-8 h-8 rounded-full bg-surface-container border border-white/10 flex items-center justify-center text-secondary hover:text-primary-container hover:border-primary-container transition-all active:scale-95"
               >
                 <Terminal className="w-4 h-4" />
               </a>
               <a
                 href="#diagnostico"
                 aria-label="Rede"
-                className="w-8 h-8 rounded-full bg-surface-container border border-white/10 flex items-center justify-center text-secondary hover:text-primary-container hover:border-primary-container transition-all"
+                className="w-8 h-8 rounded-full bg-surface-container border border-white/10 flex items-center justify-center text-secondary hover:text-primary-container hover:border-primary-container transition-all active:scale-95"
               >
                 <Share2 className="w-4 h-4" />
               </a>
               <a
                 href="#diagnostico"
                 aria-label="Chat"
-                className="w-8 h-8 rounded-full bg-surface-container border border-white/10 flex items-center justify-center text-secondary hover:text-primary-container hover:border-primary-container transition-all"
+                className="w-8 h-8 rounded-full bg-surface-container border border-white/10 flex items-center justify-center text-secondary hover:text-primary-container hover:border-primary-container transition-all active:scale-95"
               >
                 <MessageSquare className="w-4 h-4" />
               </a>
@@ -133,16 +135,23 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Rodapé inferior / Sub-footer */}
-        <div className="pt-8 border-t border-white/[0.08] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-secondary">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-primary-container" />
-            <span>Arquitetura High-Velocity & Inteligência Aplicada</span>
+        {/* Bottom Bar: Security & Certifications */}
+        <div className="pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-secondary">
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1.5 font-medium text-white">
+              <ShieldCheck className="w-4 h-4 text-primary-container" />
+              Conformidade SOC2 & LGPD
+            </span>
+            <span>•</span>
+            <span className="font-mono">SLA 99.98% Contratual</span>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-primary-container animate-pulse" />
-            <span className="font-mono text-gray-300">Sistemas Operacionais & Telemetria Ativa</span>
+          <div className="flex items-center gap-4 text-[11px] font-mono">
+            <span>Privacidade de Dados</span>
+            <span>•</span>
+            <span>Termos de Serviço</span>
+            <span>•</span>
+            <span className="text-primary-container font-semibold">Status: 100% Operacional</span>
           </div>
         </div>
       </div>

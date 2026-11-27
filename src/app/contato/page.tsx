@@ -16,8 +16,11 @@ import {
   Terminal,
 } from 'lucide-react';
 import { MotionWrapper } from '@/components/ui/MotionWrapper';
+import { Magnetic } from '@/components/ui/Magnetic';
+import { useToast } from '@/components/ui/Toast';
 
 export default function ContatoPage() {
+  const toast = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -52,7 +55,8 @@ export default function ContatoPage() {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 700);
+      toast.success('Diagnóstico Agendado!', `Convite técnico enviado para ${formData.email}`);
+    }, 600);
   };
 
   const companySizes = ['1-10', '11-50', '51-200', '200+'];
@@ -108,7 +112,7 @@ export default function ContatoPage() {
                 </div>
                 <div>
                   <div className="text-[11px] text-secondary">E-mail Corporativo</div>
-                  <div className="text-white font-semibold font-mono">contato@vertice.tech</div>
+                  <div className="text-white font-semibold font-mono">contato@danter.tech</div>
                 </div>
               </div>
 
@@ -356,15 +360,15 @@ export default function ContatoPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary-container text-on-primary-container font-bold text-sm hover:brightness-110 shadow-lime-glow transition-all cursor-pointer disabled:opacity-50"
+                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary-container text-on-primary-container font-bold text-sm hover:brightness-110 shadow-lime-glow transition-all duration-150 cursor-pointer disabled:opacity-50 active:scale-[0.97]"
                 >
                   <span>{isSubmitting ? 'Processando Agendamento...' : 'Confirmar Agendamento de Diagnóstico'}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
             ) : (
-              <div className="flex flex-col items-center justify-center py-12 text-center">
-                <div className="w-16 h-16 rounded-full bg-primary-container/20 border border-primary-container/30 flex items-center justify-center text-primary-container mb-4 shadow-lime-glow animate-bounce">
+              <div className="flex flex-col items-center justify-center py-12 text-center animate-in fade-in duration-200">
+                <div className="w-16 h-16 rounded-full bg-primary-container/20 border border-primary-container/30 flex items-center justify-center text-primary-container mb-4 shadow-lime-glow">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">Diagnóstico Confirmado com Sucesso!</h3>
@@ -387,7 +391,7 @@ export default function ContatoPage() {
                 </div>
                 <button
                   onClick={() => setIsSubmitted(false)}
-                  className="px-8 py-3 rounded-full bg-primary-container text-on-primary-container font-bold text-sm hover:brightness-110 transition-all shadow-lime-glow"
+                  className="px-8 py-3 rounded-full bg-primary-container text-on-primary-container font-bold text-sm hover:brightness-110 transition-all duration-150 shadow-lime-glow active:scale-[0.97]"
                 >
                   Agendar Outra Sessão
                 </button>

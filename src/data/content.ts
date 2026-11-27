@@ -43,12 +43,12 @@ export interface Difference {
 
 export const siteContent = {
   brand: {
-    name: 'Vértice Tech',
-    shortName: 'Vértice',
+    name: 'Danter',
+    shortName: 'Danter',
     tagline: 'Sistemas Inteligentes, Infraestrutura Sólida, Resultados Reais.',
     subtitle:
       'Transformamos desafios operacionais em software sob medida, automações com Inteligência Artificial e arquitetura em nuvem de alta disponibilidade para empresas em fase de expansão.',
-    email: 'contato@vertice.tech',
+    email: 'contato@danter.tech',
     phone: '+55 (11) 98765-4321',
     address: 'São Paulo - SP, Brasil',
     sla: '99.98%',
@@ -324,25 +324,25 @@ export const siteContent = {
     {
       dimension: 'Tempo de Resolução de Ticket / SLA',
       traditional: 'De 4 a 18 horas com intervenção humana',
-      vertice: '< 45 segundos com RAG e Agentes Autônomos',
+      danter: '< 45 segundos com RAG e Agentes Autônomos',
       impact: '-92% tempo de resposta',
     },
     {
       dimension: 'Custo Marginal de Escala',
       traditional: 'Contratação linear obrigatória a cada salto de volume',
-      vertice: 'Custo plano de infraestrutura na nuvem / tokens otimizados',
+      danter: 'Custo plano de infraestrutura na nuvem / tokens otimizados',
       impact: 'Escala 10x sem dobrar time',
     },
     {
       dimension: 'Taxa de Erros e Retrabalho',
       traditional: '15% a 25% em digitação e repasse de planilhas',
-      vertice: '99.4% de acurácia com validação determinística',
+      danter: '99.4% de acurácia com validação determinística',
       impact: 'Quase zero retrabalho',
     },
     {
       dimension: 'Auditoria e Governança LGPD',
       traditional: 'Logs descentralizados em caixas de e-mail e chats',
-      vertice: 'Trilha completa de auditoria imutável em VPC privada',
+      danter: 'Trilha completa de auditoria imutável em VPC privada',
       impact: 'Conformidade total SOC2',
     },
   ],

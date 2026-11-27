@@ -96,3 +96,123 @@ input[type="range"]::-moz-range-thumb {
   box-shadow: 0 0 10px rgba(187, 245, 39, 0.6);
   border: 2px solid #090c09;
 }
+
+/* ============================================================================
+   Hero Globe - GPU-Composited Orbital & Atmospheric Animations
+   Only animating transform & opacity (Emil Kowalski animation-performance)
+   ============================================================================ */
+@keyframes globe-float {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, -7px, 0);
+  }
+}
+
+@keyframes globe-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes globe-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes globe-radar-sweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes globe-aura-breathe {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes globe-tether-drop {
+  0% {
+    transform: translate3d(0, -100%, 0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 260%, 0);
+    opacity: 0;
+  }
+}
+
+.animate-globe-float {
+  animation: globe-float 6.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-globe-spin-slow {
+  animation: globe-spin-slow 38s linear infinite;
+  will-change: transform;
+}
+
+.animate-globe-spin-medium {
+  animation: globe-spin-slow 16s linear infinite;
+  will-change: transform;
+}
+
+.animate-globe-spin-reverse {
+  animation: globe-spin-reverse 24s linear infinite;
+  will-change: transform;
+}
+
+.animate-globe-radar {
+  animation: globe-radar-sweep 9s linear infinite;
+  will-change: transform;
+}
+
+.animate-globe-aura {
+  animation: globe-aura-breathe 5.5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-globe-tether {
+  animation: globe-tether-drop 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  will-change: transform, opacity;
+}
+
+.globe-radial-mask {
+  -webkit-mask-image: radial-gradient(circle closest-side at 50% 50%, #000 84%, rgba(0, 0, 0, 0.7) 92%, transparent 99%);
+  mask-image: radial-gradient(circle closest-side at 50% 50%, #000 84%, rgba(0, 0, 0, 0.7) 92%, transparent 99%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-globe-float,
+  .animate-globe-spin-slow,
+  .animate-globe-spin-medium,
+  .animate-globe-spin-reverse,
+  .animate-globe-radar,
+  .animate-globe-aura,
+  .animate-globe-tether {
+    animation: none;
+  }
+}
